@@ -434,7 +434,7 @@ domain_check() {
     read -rp "请输入你的域名信息(eg:www.wulabing.com):" domain
     domain_ip=$(ping "${domain}" -c 1 | sed '1{s/[^(]*(//;s/).*//;q}')
     echo -e "${OK} ${GreenBG} 正在获取 公网ip 信息，请耐心等待 ${Font}"
-    local_ip=$(curl https://api-ipv4.ip.sb/ip)
+    local_ip=$(curl -H 'User-Agent: Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:70.0) Gecko/20100101 Firefox/70.0' https://api-ipv4.ip.sb/ip)
     echo -e "域名dns解析IP：${domain_ip}"
     echo -e "本机IP: ${local_ip}"
     sleep 2
